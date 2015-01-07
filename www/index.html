@@ -5,7 +5,7 @@
         <script type="text/javascript" src="jquery-1.11.1.min.js"></script>    
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-       
+        <script type="text/javascript" src="SQLitePlugin.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
         <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
         
@@ -84,8 +84,10 @@
     </head>
 <body>
      <a class="btn" onclick="loaddata();">Load data</a>
+     <a class="btn" onclick="createDB();">Create Database</a>
     <table id="data"></table>
     <script type="text/javascript" src="load-data.js"></script>
+    <script type="text/javascript" src="database.js"></script>
     
 
 </body>
