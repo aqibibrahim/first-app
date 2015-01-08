@@ -7,7 +7,13 @@
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript" src="SQLitePlugin.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-        <!--<script type="text/javascript" charset="utf-8" src="cordova.js"></script>-->
+        <script type="text/javascript">
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+var db = window.openDatabase("test", "1.0", "PhoneGap Demo", 200000);
+db.transaction(populateDB, errorCB, successCB);
+            
+        </script>
         
     <!--   <script type="text/javascript" src="loaddata.js">
             

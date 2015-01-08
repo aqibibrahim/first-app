@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 
                 }).done(function(json){
                     jQuery(json).each(function(index,customer){
-                        var tr_html = '<tr>';
+                        var tr_html = '<tr onclick="myFunction(this)">';
                                     
                         if(index==0){
                             jQuery(customer).each(function(index,column){
@@ -33,9 +33,12 @@ jQuery(document).ready(function(){
                                 });
                         }
                         
-                        jQuery('#data').append(tr_html+'</tr>');
+                        jQuery('#data').append(tr_html+'</tr >');
                        
                     })
                 });              
             });    
         }
+        function myFunction(x) {
+    alert("Row index is: " + x.rowIndex);
+}
