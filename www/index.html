@@ -7,13 +7,45 @@
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript" src="SQLitePlugin.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
-        <script type="text/javascript">
-            document.addEventListener("deviceready", onDeviceReady, false);
+        <script type="text/javascript" src="cordova.js"></script>
+        
+        <script type="text/javascript" charset="utf-8">
 
-var db = window.openDatabase("test", "1.0", "PhoneGap Demo", 200000);
-db.transaction(populateDB, errorCB, successCB);
-            
-        </script>
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(populateDB, errorCB, successCB);
+    }
+
+    // Populate the database
+    //
+    function populateDB(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    }
+
+    // Transaction error callback
+    //
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    //
+    function successCB() {
+        alert("success!");
+    }
+
+    </script>
+
+        
         
     <!--   <script type="text/javascript" src="loaddata.js">
             
@@ -91,7 +123,7 @@ db.transaction(populateDB, errorCB, successCB);
 <body>
      <a class="btn" onclick="loaddata();">Load data</a>
      <a class="btn" onclick="createDB();">Create Database</a>
-    <table id="data"></table>
+     <table id="data" onload="getTableData();"></table>
     <script type="text/javascript" src="load-data.js"></script>
     <script type="text/javascript" src="database.js"></script>
     
